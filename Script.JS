@@ -11,6 +11,15 @@ request.onload=function(){
     
     }
 function weatherdata(name,lat,lang){
-console.log(name+" "+lat+" "+lang);
+var req=new XMLHttpRequest();
+var url='https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lang+'&appid=5d8c49397e368960ddef5cb3394b738f';
+req.open('GET',url,true);
+req.send();
+req.onload=function(){
+    var data=JSON.parse(this.response);
+    console.log(`${name} : ${data.main.temp}`)
+    
+}
+
 
 }
